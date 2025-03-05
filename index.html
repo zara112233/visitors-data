@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISITORS VERIFICATION</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>VISITORS VERIFICATION</h1>
+
+    <input type="text" id="searchInput" placeholder="Search by Name, Mobile, or Company" oninput="showSuggestions()">
+    <ul id="suggestionsList"></ul>
+
+    <div id="dateRange"></div>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mobile Number</th>
+                <th>Designation</th>
+                <th>In Time</th>
+                <th>Out Time</th>
+                <th>Missing</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated dynamically here -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

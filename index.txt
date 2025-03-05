@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h2>Visitor Data</h2>
+    
+    <!-- Table for Displaying CSV Data -->
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mobile Number</th>
+                <th>Designation</th>
+                <th>In Time</th>
+                <th>Out Time</th>
+                <th>Missing</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+// ✅ Load CSV and Display in Table
+async function loadCSV() {
+    try {
+        // Path to CSV File (Make sure you're running from a local server)
+        const response = await fetch("Data_Analyst.csv");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+        const csvText = await response.text();
+        displayData(parseCSV(csvText));
+
+    } catch (error) {
+        console.error("Error loading CSV:", error);
+    }
+}
+
+// ✅ Parse CSV to Array of Objects
+function parseCSV(csvText) {
+    const rows = csvText.split("\n").map(row => row.trim()).filter(row => row);
+    const headers = rows[0].split(",").map(header => header.trim());
+
+    return rows.slice(1).map(row => {
+        const values = row.split(",");
+        let obj = {};
+        headers.forEach((header, index) => {
+            obj[header] = values[index] ? values[index].trim() : "N/A";
+        });
+
+        // ✅ Calculate Missing (if Out Time is empty)
+        obj["Missing"] = (!obj["Out Time"] || obj["Out Time"].toLowerCase() === "n/a") ? "Yes" : "No";
+
+        return obj;
+    });
+}
+
+// ✅ Display Data in Table
+function displayData(data) {
+    const tableBody = document.querySelector("#dataTable tbody");
+    tableBody.innerHTML = data.map(row => `
+        <tr>
+            <td>${row["Name"] || "N/A"}</td>
+            <td>${row["Mobile No"] || "N/A"}</td>
+            <td>${row["Designation"] || "N/A"}</td>
+            <td>${row["In Time"] || "N/A"}</td>
+            <td>${row["Out Time"] || "N/A"}</td>
+            <td>${row["Missing"]}</td>
+        </tr>
+    `).join("");
+}
+
+// ✅ Load Data on Page Load
+window.onload = loadCSV;
